@@ -7,9 +7,16 @@ phases:
 
   build:
     commands:
-      - echo "Build phase - copying file"
-      - mkdir output
+      - echo "Build phase - checking current directory"
+      # 1. 현재 어떤 파일들이 있는지 로그로 정확히 확인 (대소문자 체크)
+      - ls -al
+      - echo "Creating output directory"
+      # 2. 이미 폴더가 있어도 에러가 나지 않도록 -p 옵션 추가
+      - mkdir -p output
+      - echo "Copying file to output"
+      # 3. 파일 복사 시도
       - cp Portal.html output/
+      - echo "Build phase completed successfully"
 
 artifacts:
   files:
