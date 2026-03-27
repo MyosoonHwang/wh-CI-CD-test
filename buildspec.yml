@@ -7,10 +7,19 @@ phases:
 
   build:
     commands:
-      - echo "Build phase - copying file"
-      - mkdir output
+      - echo "Build phase"
+      - mkdir -p output
       - cp Portal.html output/
+
+      # CodeDeploy 파일 포함
+      - mkdir -p scripts
+
+  post_build:
+    commands:
+      - echo "Post build phase"
 
 artifacts:
   files:
+    - appspec.yml
     - output/**/*
+    - scripts/**/*
